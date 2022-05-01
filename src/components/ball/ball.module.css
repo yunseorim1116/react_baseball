@@ -1,0 +1,17 @@
+.baseball {
+  background-color: rgb(255, 103, 103);
+  color: white;
+  margin: 2px;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.strike {
+  background-color: green;
+}
+
+.ball {
+  background-color: yellow;
+}
+
+
