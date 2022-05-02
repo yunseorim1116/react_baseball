@@ -9,18 +9,18 @@ const Ball = ({ value, comNumber }) => {
     ball: 0,
     out: 0,
   });
-  {
-    console.log(displayType);
-  }
 
   useEffect(() => {
+    const cloneObj = { ...obj };
+    console.log("유즈이펙트");
+
     comNumber.forEach((number, idx) => {
       const valueNum = Number(valueArr[idx]);
       if (number == valueNum) {
-        obj.strike++;
+        cloneObj.strike++;
         displayType.push("strike");
       } else if (comNumber.includes(valueNum)) {
-        obj.ball++;
+        cloneObj.ball++;
         displayType.push("ball");
       } else {
         obj.out++;
@@ -29,20 +29,21 @@ const Ball = ({ value, comNumber }) => {
       //   valueArr[idx].className = {styles.strike}
     });
     SetDisplayType([...displayType]);
-    setObj({ ...obj });
+    setObj({ ...cloneObj });
+    console.log(cloneObj);
   }, []);
-  console.log(displayType);
+  // console.log(displayType);
+
   return (
     <div>
       {valueArr.map((ball, idx) => {
         return (
-         
           <span className={`${styles.baseball} ${styles[displayType[idx]]}`}>
             {ball}
           </span>
         );
       })}
-
+      {console.log(obj)}
       <div>{obj.strike} 스트라이크</div>
       <div>{obj.ball} 볼</div>
       <div>{obj.out} 아웃</div>

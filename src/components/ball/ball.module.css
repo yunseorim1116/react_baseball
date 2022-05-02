@@ -3,15 +3,15 @@
   color: white;
   margin: 2px;
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .strike {
-  background-color: green;
+  background-color: rgb(64, 169, 64);
 }
 
 .ball {
-  background-color: yellow;
+  background-color: rgb(255, 236, 93);
 }
 
 

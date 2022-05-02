@@ -14,33 +14,33 @@ function App() {
     while (set.size < playNumber) set.add(Math.floor(Math.random() * 9));
     const newRandArr = Array.from(set); //중복없는 배열
     setComNumber(newRandArr);
+    console.log(newRandArr);
   }, []);
-
-
-    console.log(comNumber);
- 
 
   const onChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
   };
-  const onSubmit = () => {
-    console.log(userNum);
+  const onSubmit = (inputValue) => {
+    if (inputValue.length !== 4) {
+      alert('숫자 4개를 입력해주세요T^T')
+      setInputValue("");
+    }
+    else {
+      const userNumObj = {
+        id: new Date(),
+        inputValue,
+      };
 
-    const userNumObj = {
-      id: new Date(),
-      inputValue,
-    };
-
-
-    setUserNum([userNumObj, ...userNum]);
-    setInputValue("");
+      setUserNum([userNumObj, ...userNum]);
+      setInputValue("");
+    }
   };
   return (
     <>
       <Headers />
       <input onChange={onChange} value={inputValue} />
-      <button onClick={onSubmit}>확인</button>
+      <button onClick={() => onSubmit(inputValue)}>확인</button>
       {userNum.map((ball, idx) => {
         console.log(ball);
         return (
