@@ -29,7 +29,7 @@ const Ball = ({ value, comNumber }) => {
       //   valueArr[idx].className = {styles.strike}
     });
     SetDisplayType([...displayType]);
-    setObj({ ...cloneObj });
+    setObj( cloneObj );
     console.log(cloneObj);
   }, []);
   // console.log(displayType);
