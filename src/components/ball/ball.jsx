@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import styles from "./ball.module.css";
 
-const Ball = ({ value, comNumber }) => {
+const Ball = ({ value, comNumber, chanceCount }) => {
   const valueArr = [...value];
   const [displayType, SetDisplayType] = useState([]);
+  // const [chanceCount, setChanceCount] = useState(10);
+
   const [obj, setObj] = useState({
     strike: 0,
     ball: 0,
@@ -12,7 +14,6 @@ const Ball = ({ value, comNumber }) => {
 
   useEffect(() => {
     const cloneObj = { ...obj };
-    console.log("유즈이펙트");
 
     comNumber.forEach((number, idx) => {
       const valueNum = Number(valueArr[idx]);
@@ -23,14 +24,13 @@ const Ball = ({ value, comNumber }) => {
         cloneObj.ball++;
         displayType.push("ball");
       } else {
-        obj.out++;
+        cloneObj.out++;
         displayType.push("out");
       }
       //   valueArr[idx].className = {styles.strike}
     });
     SetDisplayType([...displayType]);
-    setObj( cloneObj );
-    console.log(cloneObj);
+    setObj(cloneObj);
   }, []);
   // console.log(displayType);
 
@@ -43,7 +43,7 @@ const Ball = ({ value, comNumber }) => {
           </span>
         );
       })}
-      {console.log(obj)}
+
       <div>{obj.strike} 스트라이크</div>
       <div>{obj.ball} 볼</div>
       <div>{obj.out} 아웃</div>
